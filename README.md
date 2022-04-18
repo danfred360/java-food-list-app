@@ -56,7 +56,7 @@ mvn clean javafx:run
 ```
 
 
-## Explanation - 
+## Explanation
 Run `code .` to open VS Code in your current working directory to look at what you generated.
 
 Run `mvn clean javafx:run` from inside your project directory to run the project. (You may need to us `cd` in the terminal to change directory.)
