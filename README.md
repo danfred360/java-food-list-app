@@ -57,8 +57,8 @@ mvn clean javafx:run
 
 
 ## Explanation
-Run `code .` to open VS Code in your current working directory to look at what you generated.
+Run `code .` to open VS Code in your current working directory.
 
-Run `mvn clean javafx:run` from inside your project directory to run the project. (You may need to us `cd` in the terminal to change directory.)
+Run `mvn clean javafx:run` from inside your project directory to run the project. (You can use VS Code's integrated terminal now if you want. You may need to us `cd` in the terminal to change directory.)
 
 *Note: The `mvn archetype:generate` command is similar to what Netbeans does when you start a project. It generates all the files you need in the correct structure, so it saves you a lot of headaches.*
