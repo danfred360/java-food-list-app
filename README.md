@@ -44,7 +44,19 @@ mvn archetype:generate -DarchetypeGroupId=org.openjfx -DarchetypeArtifactId=java
 ```
 
 ## Running Project
+```bash
+# clone project
+git clone git@github.com:danfred360/ist-411-group-1.git
+cd ist-411-group-1
 
+# check out develop branch to run version of program that's still in development
+git checkout develop
+# run project
+mvn clean javafx:run
+```
+
+
+## Explanation - 
 Run `code .` to open VS Code in your current working directory to look at what you generated.
 
 Run `mvn clean javafx:run` from inside your project directory to run the project. (You may need to us `cd` in the terminal to change directory.)
