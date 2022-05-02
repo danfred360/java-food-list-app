@@ -1,47 +1,62 @@
 package psu.edu;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import javafx.scene.layout.GridPane;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.text.Text;
+// Java core packages
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+// import java.sql.*;
+// import java.util.logging.Level;
+// import java.util.logging.Logger;
+
+// Java extension packages
+import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends JFrame {
 
-    @Override
-    public void start(Stage stage) {
-        //var javaVersion = SystemInfo.javaVersion();
-        //var javafxVersion = SystemInfo.javafxVersion();
-
-        //var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        //var scene = new Scene(new StackPane(label), 640, 480);
-
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+    private String strDBName = "";
+    
+    private JDesktopPane desktop;
+    
+    private DataAccess database;
+    
+    Action newAction, saveAction, deleteAction, searchAction, exitAction, openDBAction;
+    
+    JFileChooser fileChooser;
+    
+    public App() {
+        super(" Food List ");
+        try {
+            strDBName = getDBFileName(strDBName);
+            database = new CustomDataAccess(strDBName);
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
         
-        Scene scene = new Scene(grid, 600, 300);
-
-        Text sceneTitle = new Text("My Food Lists");
-        grid.add(sceneTitle, 0, 0, 2, 1);
-
+        // db access successfull
         
-
-        stage.setScene(scene);
-        stage.show();
+        JToolBar toolBar = new JToolBar();
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setMnemonic('F');
+        
+        newAction = new NewAction();
+        openDBAction = new OpenDBAction();
+        openDBAction.setEnabled(true);
+        saveAction = newSaveAction();
+        saveAction.setEnabled(false); // disabled by default
+        //deleteAction = new DeleteAction
     }
 
     public static void main(String[] args) {
-        launch();
+        //launch();
     }
 
 }
